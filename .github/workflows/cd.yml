@@ -1,0 +1,27 @@
+name: CD
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ubuntu20:
+    name: Ubuntu 20.04
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install libgl-dev libglu1-mesa-dev libgles2-mesa-dev libegl1-mesa-dev mesa-utils xvfb
+      - name: Run benchmark
+        run: xvfb-run glxgears
+
+  ubuntu22:
+    name: Ubuntu 22.04
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install libgl-dev libglu1-mesa-dev libgles2-mesa-dev libegl1-mesa-dev mesa-utils xvfb
+      - name: Run benchmark
+        run: xvfb-run glxgears
